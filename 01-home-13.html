@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShesMyDogLady | San Diego Dog Care</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --t:#81e5fe; --tm:#50dbfe; --td:#78e3fe;
+  --tp:#e8faff; --ts:#81e5fe;
+  --white:#FFFFFF; --off:#F9FEFE;
+  --text:#1C3A39; --muted:#6B9997; --sand:#FAF7F2;
+}
+html { scroll-behavior:smooth; }
+
+/* ── BOLD INTERACTIVE TEXT ── */
+h1,h2,h3,h4 {
+  font-family:"Playfair Display",serif !important;
+  font-weight:900 !important;
+  letter-spacing:-1px !important;
+  line-height:1.05 !important;
+}
+h1 { font-size:clamp(52px,8vw,96px) !important; }
+h2 { font-size:clamp(36px,5vw,60px) !important; }
+h3 { font-size:clamp(22px,3vw,30px) !important; font-weight:800 !important; }
+.eyebrow {
+  font-size:11px !important; font-weight:900 !important;
+  letter-spacing:0.22em !important;
+}
+body, p, a, span, div, li, label, input, textarea, button {
+  font-family:"Nunito",sans-serif !important;
+  font-weight:600 !important;
+}
+.lead { font-size:17px !important; font-weight:600 !important; }
+.nav-links a { font-weight:800 !important; font-size:13px !important; letter-spacing:0.06em !important; }
+.nav-book, .nav-points, .nav-login { font-weight:800 !important; }
+.btn-primary, .btn-ghost, .btn-tiffany, .btn-white, .btn-book,
+.btn-send, .btn-td, .btn-outline, .btn-outline-sm, .pts-cta, .btn-redeem, .upload-label {
+  font-weight:900 !important;
+  letter-spacing:0.06em !important;
+  font-size:14px !important;
+}
+.w-tag { font-weight:900 !important; font-size:12px !important; letter-spacing:0.1em !important; }
+.chip { font-weight:800 !important; }
+.review-q { font-weight:700 !important; font-size:19px !important; line-height:1.55 !important; }
+.review-name { font-weight:900 !important; }
+.service-tag { font-weight:900 !important; }
+.member-card h3 { font-weight:900 !important; }
+.pts-num { font-weight:900 !important; }
+.footer-col h4 { font-weight:900 !important; letter-spacing:0.18em !important; }
+/* Hover underline effect on links */
+.nav-links a { position:relative; }
+.nav-links a::after {
+  content:""; position:absolute; bottom:-4px; left:0; width:0; height:2px;
+  background:var(--td); border-radius:2px; transition:width .25s ease;
+}
+.nav-links a:hover::after { width:100%; }
+/* Heading gradient on hero */
+.hero h1 {
+  background:linear-gradient(135deg,#ffffff 30%,#81e5fe 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  background-clip:text !important;
+  text-shadow:none !important;
+}
+.hero h1 em { -webkit-text-fill-color:transparent !important; }
+/* Section headings sky blue accent on first word */
+.section-accent { color:var(--td); }
+/* Bold card titles */
+.care-body h3, .service-body h3, .team-name, .spec-card h3 {
+  font-weight:900 !important;
+  letter-spacing:-0.5px !important;
+}
+/* Tab interactive text */
+.tab { font-weight:800 !important; }
+.tab.active { color:var(--td) !important; font-weight:900 !important; }
+/* FAQ bold */
+.faq-q { font-weight:800 !important; font-size:16px !important; }
+/* Review stars bigger */
+.review-stars { font-size:17px !important; letter-spacing:3px !important; }
+body { font-family:'Nunito',sans-serif; color:var(--text); background:var(--white); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+h1,h2,h3,h4 { font-family:'Playfair Display',serif; letter-spacing:-0.3px; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:99; height:68px; display:flex; align-items:center; justify-content:space-between; padding:0 48px; background:rgba(255,255,255,0.96); backdrop-filter:blur(10px); border-bottom:1.5px solid var(--ts); transition:box-shadow .3s; }
+.nav-logo { font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:var(--td); text-decoration:none; display:flex; flex-direction:column; line-height:1.1; }
+.nav-logo span { font-size:10px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-family:'Nunito',sans-serif; }
+.nav-links { display:flex; gap:28px; list-style:none; }
+.nav-links a { font-size:13px; font-weight:600; color:var(--muted); text-decoration:none; transition:color .2s; letter-spacing:0.04em; }
+.nav-links a:hover { color:var(--td); }
+.nav-right { display:flex; align-items:center; gap:12px; }
+.nav-login { font-size:13px; font-weight:600; color:var(--muted); text-decoration:none; }
+.nav-points { display:flex; align-items:center; gap:6px; font-size:13px; font-weight:700; color:var(--td); text-decoration:none; background:var(--tp); padding:7px 14px; border-radius:100px; transition:background .2s; }
+.nav-points:hover { background:var(--ts); }
+.nav-book { font-size:13px; font-weight:700; color:#fff; background:var(--td); padding:9px 22px; border-radius:100px; text-decoration:none; transition:background .2s,transform .15s; box-shadow:0 4px 14px rgba(120,227,254,.25); }
+.nav-book:hover { background:var(--tm); transform:translateY(-1px); }
+
+/* HERO */
+.hero { margin-top:68px; position:relative; height:calc(100vh - 68px); min-height:500px; overflow:hidden; }
+.hero-slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1.4s ease; }
+.hero-slide.active { opacity:1; }
+.hero-slide:nth-child(1) { background-image:url('https://static.wixstatic.com/media/169970_0f6bc01614994ade8d061b382c48111d~mv2.jpg'); }
+.hero-slide:nth-child(2) { background-image:url('https://static.wixstatic.com/media/169970_1459c9ecd83c4c9b854520f7ddd1591b~mv2.jpg'); }
+.hero-slide:nth-child(3) { background-image:url('https://static.wixstatic.com/media/169970_1877fdd2fc0c4322b142dae09f5d8d12~mv2.png'); }
+.hero-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(129,229,254,.3) 0%,rgba(255,255,255,.1) 60%,rgba(129,229,254,.18) 100%); }
+.hero-content { position:relative; z-index:2; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 24px; }
+.hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,.8); margin-bottom:20px; background:rgba(255,255,255,.15); backdrop-filter:blur(6px); padding:7px 18px; border-radius:100px; border:1px solid rgba(255,255,255,.25); display:inline-block; }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(48px,8vw,96px); font-weight:600; line-height:1.0; letter-spacing:-1px; color:#fff; text-shadow:0 2px 24px rgba(28,58,57,.3); margin-bottom:6px; }
+.hero h1 em { font-style:italic; font-weight:400; }
+.hero-sub { font-size:17px; font-weight:300; color:rgba(255,255,255,.92); max-width:460px; line-height:1.65; margin:18px auto 36px; text-shadow:0 1px 8px rgba(28,58,57,.2); }
+.hero-btns { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+.btn-primary { display:inline-block; font-size:14px; font-weight:700; color:var(--td); background:#fff; padding:14px 32px; border-radius:100px; text-decoration:none; transition:all .2s; box-shadow:0 4px 20px rgba(0,0,0,.15); }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,.18); }
+.btn-ghost { display:inline-block; font-size:14px; font-weight:700; color:#fff; background:rgba(255,255,255,.12); padding:14px 32px; border-radius:100px; text-decoration:none; border:2px solid rgba(255,255,255,.55); backdrop-filter:blur(4px); transition:all .2s; }
+.btn-ghost:hover { background:rgba(255,255,255,.22); border-color:#fff; }
+.hero-dots { position:absolute; bottom:28px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:3; }
+.hero-dot { width:8px; height:8px; border-radius:100px; background:rgba(255,255,255,.4); border:none; cursor:pointer; transition:all .3s; }
+.hero-dot.active { background:#fff; width:24px; }
+
+/* WELCOME STRIP */
+.welcome-strip { background:#dff6ff; padding:16px 48px; display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
+.w-tag { font-size:12px; font-weight:700; letter-spacing:0.06em; color:var(--td); background:#fff; padding:6px 16px; border-radius:100px; }
+
+/* ABOUT */
+.about-wrap { padding:88px 60px; max-width:1200px; margin:0 auto; }
+.about-grid { display:grid; grid-template-columns:1fr; gap:0; align-items:center; max-width:720px; }
+.about-img { position:relative; }
+.about-img img { width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:20px; display:block; }
+.about-badge { position:absolute; bottom:24px; left:24px; background:#fff; border-radius:16px; padding:14px 20px; box-shadow:0 8px 32px rgba(120,227,254,.18); display:flex; align-items:center; gap:12px; }
+.badge-icon { font-size:26px; }
+.badge-top { font-size:13px; font-weight:700; color:var(--text); }
+.badge-bot { font-size:11px; color:var(--muted); }
+.eyebrow { font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--td); margin-bottom:12px; display:block; }
+h2 { font-family:'Playfair Display',serif; font-size:clamp(32px,4vw,52px); font-weight:600; line-height:1.1; }
+.lead { font-size:16px; line-height:1.75; color:var(--muted); margin-top:14px; max-width:520px; }
+.chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+.chip { font-size:13px; font-weight:600; color:var(--td); background:var(--tp); padding:7px 16px; border-radius:100px; border:1.5px solid var(--ts); }
+.serve-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:20px; }
+.serve-item { font-size:13px; color:var(--muted); font-weight:600; display:flex; align-items:center; gap:8px; }
+.serve-item::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--td); flex-shrink:0; }
+.about-cta { display:inline-flex; align-items:center; gap:8px; margin-top:32px; font-size:14px; font-weight:700; color:var(--td); text-decoration:none; transition:gap .2s; }
+.about-cta:hover { gap:14px; }
+
+/* REVIEWS */
+.reviews-wrap { background:var(--sand); padding:88px 60px; }
+.reviews-inner { max-width:1200px; margin:0 auto; }
+.reviews-head { text-align:center; max-width:560px; margin:0 auto 48px; }
+.reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.review-card { background:#fff; border-radius:20px; padding:32px; border:1.5px solid var(--ts); transition:transform .25s,box-shadow .25s; }
+.review-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(120,227,254,.13); }
+.review-stars { color:var(--td); font-size:14px; letter-spacing:2px; margin-bottom:14px; }
+.review-q { font-family:'Playfair Display',serif; font-style:italic; font-size:18px; line-height:1.6; color:var(--text); margin-bottom:20px; }
+.review-author { display:flex; align-items:center; gap:10px; }
+.review-av { width:36px; height:36px; border-radius:50%; background:var(--tp); border:2px solid var(--ts); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:var(--td); flex-shrink:0; }
+.review-name { font-size:13px; font-weight:700; }
+.review-loc { font-size:12px; color:var(--muted); }
+
+/* CARE CARDS */
+.care-wrap { padding:88px 60px; max-width:1200px; margin:0 auto; }
+.care-head { max-width:540px; margin-bottom:52px; }
+.care-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.care-card { border-radius:16px; overflow:hidden; border:1.5px solid var(--ts); transition:transform .25s,box-shadow .25s; background:#fff; display:flex; flex-direction:column; }
+.care-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(120,227,254,.14); }
+.care-img { width:100%; aspect-ratio:1/1; object-fit:cover; display:block; flex-shrink:0; }
+.care-body { padding:16px; flex:1; }
+.care-body h3 { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; margin-bottom:6px; }
+.care-body p { font-size:12px; color:var(--muted); line-height:1.5; }
+
+/* MEMBERS */
+.members-wrap { background:linear-gradient(135deg,#e0f8ff 0%,#f0fbff 50%,#e8faff 100%); padding:88px 60px; }
+.members-inner { max-width:1200px; margin:0 auto; }
+.members-head { max-width:520px; margin-bottom:48px; }
+.members-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.member-card { background:#fff; border-radius:20px; padding:28px; border:1.5px solid var(--ts); transition:all .25s; text-decoration:none; display:block; }
+.member-card:hover { background:var(--tp); transform:translateY(-5px); box-shadow:0 16px 36px rgba(120,227,254,.15); border-color:var(--tm); }
+.member-icon { font-size:28px; margin-bottom:14px; }
+.member-card h3 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px; font-family:'Nunito',sans-serif; }
+.member-card p { font-size:13px; color:var(--muted); line-height:1.6; }
+.member-link { display:inline-block; margin-top:12px; font-size:12px; font-weight:700; color:var(--td); }
+.points-widget { background:#fff; border-radius:24px; border:1.5px solid var(--ts); padding:32px 36px; margin-top:24px; display:flex; align-items:center; gap:36px; flex-wrap:wrap; box-shadow:0 8px 32px rgba(120,227,254,.1); }
+.pts-num { font-family:'Playfair Display',serif; font-size:64px; font-weight:600; color:var(--td); line-height:1; }
+.pts-label { font-size:12px; font-weight:700; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; margin-top:4px; }
+.pts-tier { display:inline-flex; align-items:center; gap:6px; margin-top:8px; background:var(--tp); color:var(--td); font-size:12px; font-weight:700; padding:5px 14px; border-radius:100px; }
+.pts-bar-wrap { flex:1; min-width:200px; }
+.pts-track { height:8px; background:var(--tp); border-radius:100px; overflow:hidden; }
+.pts-fill { height:100%; background:linear-gradient(90deg,var(--t),var(--td)); border-radius:100px; width:0; transition:width 1.5s ease; }
+.pts-labels { display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin-top:8px; font-weight:600; }
+.pts-cta { display:inline-block; font-size:13px; font-weight:700; color:#fff; background:var(--td); padding:12px 28px; border-radius:100px; text-decoration:none; transition:background .2s; box-shadow:0 4px 14px rgba(120,227,254,.3); }
+.pts-cta:hover { background:var(--tm); }
+
+/* CONTACT with bg carousel */
+.contact-wrap { position:relative; overflow:hidden; }
+.cbg { position:absolute; inset:0; z-index:0; }
+.cbg-slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1.6s ease; }
+.cbg-slide.active { opacity:1; }
+.cbg-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(232,248,247,.88),rgba(255,255,255,.90),rgba(232,248,247,.86)); }
+.cbg-dots { position:absolute; bottom:20px; right:28px; display:flex; gap:7px; z-index:2; }
+.cbg-dot { width:7px; height:7px; border-radius:100px; background:var(--tm); opacity:.35; border:none; cursor:pointer; transition:all .3s; }
+.cbg-dot.active { opacity:1; width:20px; }
+.contact-inner { position:relative; z-index:1; max-width:700px; margin:0 auto; text-align:center; padding:88px 24px; }
+.contact-inner .lead { margin:0 auto 48px; }
+.contact-form { background:var(--off); border-radius:24px; border:1.5px solid var(--ts); padding:48px; text-align:left; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form-group { margin-bottom:20px; }
+.form-group label { display:block; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+.form-group input, .form-group textarea, .form-group select { width:100%; padding:12px 16px; border:1.5px solid var(--ts); border-radius:10px; font-family:'Nunito',sans-serif; font-size:14px; color:var(--text); background:#fff; outline:none; transition:border-color .2s,box-shadow .2s; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:var(--tm); box-shadow:0 0 0 3px rgba(80,219,254,.15); }
+.form-group textarea { min-height:90px; resize:none; }
+.pills-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+.s-pill { font-size:13px; font-weight:700; cursor:pointer; padding:8px 18px; border-radius:100px; color:var(--td); background:var(--tp); border:1.5px solid var(--ts); transition:all .2s; user-select:none; }
+.s-pill.on { background:var(--td); color:#fff; border-color:var(--td); }
+.btn-send { width:100%; padding:15px; margin-top:8px; background:var(--td); color:#fff; font-family:'Nunito',sans-serif; font-size:14px; font-weight:700; border:none; border-radius:100px; cursor:pointer; transition:background .2s,transform .15s; box-shadow:0 4px 18px rgba(120,227,254,.3); }
+.btn-send:hover { background:var(--tm); transform:translateY(-1px); }
+
+/* FOOTER */
+footer { background:var(--text); color:rgba(255,255,255,.55); padding:56px 60px 32px; }
+.footer-top { display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.08); gap:48px; flex-wrap:wrap; }
+.footer-logo { font-family:'Playfair Display',serif; font-size:22px; font-weight:600; color:var(--ts); margin-bottom:8px; }
+.footer-tag { font-size:13px; max-width:220px; line-height:1.65; }
+.footer-nav { display:flex; gap:60px; }
+.footer-col h4 { font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#fff; margin-bottom:16px; }
+.footer-col a { display:block; font-size:13px; color:rgba(255,255,255,.5); text-decoration:none; margin-bottom:10px; transition:color .2s; }
+.footer-col a:hover { color:var(--ts); }
+.footer-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:28px; font-size:12px; flex-wrap:wrap; gap:12px; }
+.insta-link { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:rgba(255,255,255,.55); text-decoration:none; transition:color .2s; }
+.insta-link:hover { color:var(--ts); }
+
+/* CHAT FAB */
+.chat-fab { position:fixed; bottom:24px; right:24px; z-index:200; display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
+.chat-tip { background:var(--td); color:#fff; font-size:12px; font-weight:700; padding:7px 14px; border-radius:100px; white-space:nowrap; opacity:0; transform:translateY(4px); transition:all .2s; pointer-events:none; }
+.chat-fab:hover .chat-tip { opacity:1; transform:none; }
+.chat-btn { width:56px; height:56px; border-radius:50%; background:var(--td); border:none; cursor:pointer; font-size:20px; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 24px rgba(120,227,254,.35); transition:transform .2s,background .2s; }
+.chat-btn:hover { transform:scale(1.1); background:var(--tm); }
+#smdl-bar { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--t),var(--td)); z-index:9999; width:0; transition:width .1s; pointer-events:none; }
+.reveal { opacity:0; transform:translateY(20px); transition:opacity .65s ease,transform .65s ease; }
+.reveal.in { opacity:1; transform:none; }
+::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:var(--tp);} ::-webkit-scrollbar-thumb{background:var(--tm);border-radius:100px;}
+@media(max-width:900px){
+  nav{padding:0 20px;} .nav-links{display:none;}
+  .about-wrap,.care-wrap{padding:64px 24px;}
+  .about-grid{grid-template-columns:1fr;gap:36px;}
+  .reviews-grid,.care-grid{grid-template-columns:1fr;}
+  .members-grid{grid-template-columns:1fr 1fr;}
+  .reviews-wrap,.members-wrap{padding:64px 24px;}
+  .contact-form{padding:28px 20px;} .form-row{grid-template-columns:1fr;}
+  .points-widget{flex-direction:column;align-items:flex-start;}
+  footer{padding:48px 24px 28px;} .footer-nav{flex-direction:column;gap:24px;}
+  .welcome-strip{padding:14px 20px;}
+}
+</style>
+</head>
+<body>
+<div id="smdl-bar"></div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a class="nav-logo" href="01-home.html">ShesMyDogLady<span>& He's My Dog Dude</span></a>
+  <ul class="nav-links">
+    <li><a href="02-about.html">About</a></li>
+    <li><a href="03-services.html">Services</a></li>
+    <li><a href="04-members.html">Members</a></li>
+    <li><a href="05-dogs.html">The Dogs</a></li>
+    <li><a href="06-contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="nav-login" href="04-members.html">Log In</a>
+    <a class="nav-points" href="04-members.html">View Points</a>
+    <a class="nav-book" href="06-contact.html">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slide active"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">San Diego Dog Care</div>
+    <h1>Shes My Dog Lady<br><em>& He's My Dog Dude</em></h1>
+    <p class="hero-sub">Unconditional love and personalized care for reactive pups, rescues, working breeds, and couch potatoes alike.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="06-contact.html">Schedule Meet &amp; Greet</a>
+      <a class="btn-ghost" href="03-services.html">Explore Services</a>
+    </div>
+  </div>
+  <div class="hero-dots">
+    <button class="hero-dot active" onclick="goSlide(0)"></button>
+    <button class="hero-dot" onclick="goSlide(1)"></button>
+    <button class="hero-dot" onclick="goSlide(2)"></button>
+  </div>
+</section>
+
+<!-- WELCOME STRIP -->
+<div class="welcome-strip">
+  <span class="w-tag">Reactive Pups</span>
+  <span class="w-tag">Fearful Dogs</span>
+  <span class="w-tag">Rescues</span>
+  <span class="w-tag">Working Breeds</span>
+  <span class="w-tag">Dogs in Training</span>
+  <span class="w-tag">Puppy Care</span>
+  <span class="w-tag">High Energy</span>
+</div>
+
+<!-- ABOUT -->
+<div class="about-wrap" id="about">
+  <div class="about-grid reveal">
+    <div style="display:none;"></div>
+    <div>
+      <span class="eyebrow">Welcome</span>
+      <h2>Your go to place for training, walks, and sleepovers</h2>
+      <p class="lead">Our mission is to create long lasting bonds and fill that need for people looking for a trainer, walker, and sitter. We are here for all of it and we pour our hearts into every single interaction.</p>
+      <div class="chips">
+        <span class="chip">Reactive &amp; Fearful Pups</span>
+        <span class="chip">Rescues</span>
+        <span class="chip">Working Line Breeds</span>
+        <span class="chip">Dogs in Training</span>
+        <span class="chip">Puppy Care</span>
+      </div>
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:28px;">Where we serve</p>
+      <div class="serve-grid" style="margin-top:12px;">
+        <span class="serve-item">Pacific Beach, La Jolla, OB</span>
+        <span class="serve-item">Downtown &amp; Little Italy</span>
+        <span class="serve-item">Del Mar, Solana Beach, Encinitas</span>
+        <span class="serve-item">North Park, South Park, Clairemont</span>
+        <span class="serve-item">Spring Valley, El Cajon, La Mesa</span>
+      </div>
+      <a class="about-cta" href="02-about.html">Learn more about us &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="reviews-wrap">
+  <div class="reviews-inner">
+    <div class="reviews-head reveal">
+      <span class="eyebrow">Happy Families</span>
+      <h2>What our clients say</h2>
+    </div>
+    <div class="reviews-grid reveal">
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-q">"Alannah is amazing! She went above and beyond with our pups. We are so happy we found her the pups love her!!"</p>
+        <div class="review-author"><div class="review-av">NK</div><div><div class="review-name">Nikita</div><div class="review-loc">San Diego, CA</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-q">"Cameron was so professional and caring with my dog. I would HIGHLY recommend him to anyone looking for quality dog care!"</p>
+        <div class="review-author"><div class="review-av">ML</div><div><div class="review-name">Melissa</div><div class="review-loc">San Diego, CA</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-q">"Biscuit was in phenomenal care with Alannah! 10/10 would recommend for any dog, especially reactive pups."</p>
+        <div class="review-author"><div class="review-av">KL</div><div><div class="review-name">Kale</div><div class="review-loc">San Diego, CA</div></div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <a class="btn-primary" style="color:var(--td);background:#fff;border:2px solid var(--ts);box-shadow:none;" href="06-contact.html">Schedule a Meet &amp; Greet</a>
+    </div>
+  </div>
+</div>
+
+<!-- CARE -->
+<div class="care-wrap">
+  <div class="care-head reveal">
+    <span class="eyebrow">Personal Care</span>
+    <h2>Every dog and handler at a different phase we meet you where you are</h2>
+  </div>
+  <div class="care-grid reveal">
+    <div class="care-card">
+      <img class="care-img" src="https://static.wixstatic.com/media/169970_52011753e8184953bc34f91c03839389~mv2.jpg/v1/fill/w_652,h_874,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0834_edited.jpg" alt="Tailored Services">
+      <div class="care-body"><h3>Tailored Services</h3><p>Customized care designed around your dog's personality and unique needs.</p></div>
+    </div>
+    <div class="care-card">
+      <img class="care-img" src="https://static.wixstatic.com/media/169970_454f9551d0c5485aa7ab4018f2901656~mv2.jpg/v1/fill/w_652,h_874,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0424%202_edited.jpg" alt="Experienced Staff">
+      <div class="care-body"><h3>Experienced Staff</h3><p>Passionate handlers dedicated to personalized attention in a safe, nurturing environment.</p></div>
+    </div>
+    <div class="care-card">
+      <img class="care-img" src="https://static.wixstatic.com/media/169970_e9cca99f614a44e7b68aaa6c6e5753a0~mv2.png/v1/fill/w_652,h_874,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0145_heic.png" alt="Customer Satisfaction">
+      <div class="care-body"><h3>Customer Satisfaction</h3><p>Your dog will be so happy they might want to leave with us. Based on true events.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- MEMBERS PREVIEW -->
+<div class="members-wrap">
+  <div class="members-inner">
+    <div class="members-head reveal">
+      <span class="eyebrow">Members Area</span>
+      <h2>Your pack perks, all in one place</h2>
+      <p class="lead">Track Puppy Points, redeem rewards, share photos of your pup, and manage bookings.</p>
+    </div>
+    <div class="members-grid reveal">
+      <a class="member-card" href="04-members.html">
+        <div class="member-icon">&#9733;</div>
+        <h3>Puppy Points</h3>
+        <p>Earn points with every booking and redeem for free walks and perks.</p>
+        <span class="member-link">View Points &rarr;</span>
+      </a>
+      <a class="member-card" href="04-members.html">
+        <div class="member-icon">&#9670;</div>
+        <h3>Rewards &amp; Tiers</h3>
+        <p>Unlock Pup, Pack, and Alpha tiers. More loyalty, more benefits.</p>
+        <span class="member-link">Earn Rewards &rarr;</span>
+      </a>
+      <a class="member-card" href="05-dogs.html">
+        <div class="member-icon">&#9632;</div>
+        <h3>Dog Photo Gallery</h3>
+        <p>Upload and share photos from walks, stays, and training milestones.</p>
+        <span class="member-link">Share Photos &rarr;</span>
+      </a>
+      <a class="member-card" href="04-members.html">
+        <div class="member-icon">&#9654;</div>
+        <h3>My Bookings</h3>
+        <p>View sessions, read sitter notes, and rebook with ease.</p>
+        <span class="member-link">View Bookings &rarr;</span>
+      </a>
+    </div>
+    <div class="points-widget reveal">
+      <div>
+        <div class="pts-num">325</div>
+        <div class="pts-label">Puppy Points</div>
+        <div class="pts-tier">Pack Member</div>
+      </div>
+      <div class="pts-bar-wrap">
+        <div class="pts-track"><div class="pts-fill" id="ptsFill"></div></div>
+        <div class="pts-labels"><span>325 pts</span><span>500 pts Alpha</span></div>
+      </div>
+      <a class="pts-cta" href="04-members.html">Go to My Account</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="cbg">
+    <div class="cbg-slide active" style="background-image:url('https://static.wixstatic.com/media/169970_0f6bc01614994ade8d061b382c48111d~mv2.jpg')"></div>
+    <div class="cbg-slide" style="background-image:url('https://static.wixstatic.com/media/169970_1459c9ecd83c4c9b854520f7ddd1591b~mv2.jpg')"></div>
+    <div class="cbg-slide" style="background-image:url('https://static.wixstatic.com/media/169970_52011753e8184953bc34f91c03839389~mv2.jpg/v1/fill/w_652,h_874,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0834_edited.jpg')"></div>
+    <div class="cbg-slide" style="background-image:url('https://static.wixstatic.com/media/169970_454f9551d0c5485aa7ab4018f2901656~mv2.jpg/v1/fill/w_652,h_874,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0424%202_edited.jpg')"></div>
+    <div class="cbg-slide" style="background-image:url('https://static.wixstatic.com/media/169970_e9cca99f614a44e7b68aaa6c6e5753a0~mv2.png/v1/fill/w_652,h_874,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0145_heic.png')"></div>
+    <div class="cbg-overlay"></div>
+    <div class="cbg-dots" id="cbgDots"></div>
+  </div>
+  <div class="contact-inner reveal">
+    <span class="eyebrow">Get In Touch</span>
+    <h2>How can we help?</h2>
+    <p class="lead">Tell us about your pup and we'll reach out to schedule your free meet &amp; greet.</p>
+    <div class="contact-form">
+      <form onsubmit="handleSend(event)">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="Jane"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="jane@email.com"></div>
+        <div class="form-group"><label>Phone</label><input type="tel" placeholder="(760) 000-0000"></div>
+        <div class="form-group">
+          <label>I'm Interested In</label>
+          <div class="pills-wrap">
+            <span class="s-pill" onclick="this.classList.toggle('on')">Private Lessons</span>
+            <span class="s-pill" onclick="this.classList.toggle('on')">Training Walks</span>
+            <span class="s-pill" onclick="this.classList.toggle('on')">Overnight Care</span>
+            <span class="s-pill" onclick="this.classList.toggle('on')">Other</span>
+          </div>
+        </div>
+        <div class="form-group"><label>Tell us about your pup</label><textarea placeholder="Breed, age, anything we should know..."></textarea></div>
+        <button class="btn-send" type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">ShesMyDogLady</div>
+      <p class="footer-tag">Unconditional love and personalized care for every dog in San Diego.</p>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="01-home.html">Home</a>
+        <a href="02-about.html">About Us</a>
+        <a href="03-services.html">Services</a>
+        <a href="05-dogs.html">The Dogs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Members</h4>
+        <a href="04-members.html">Earn Puppy Points</a>
+        <a href="04-members.html">My Rewards</a>
+        <a href="04-members.html">My Account</a>
+        <a href="06-contact.html">Book Now</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 ShesMyDogLady. All rights reserved.</span>
+    <a class="insta-link" href="https://www.instagram.com/shesmydoglady/" target="_blank">@shesmydoglady</a>
+  </div>
+</footer>
+
+<!-- CHAT FAB -->
+<div class="chat-fab">
+  <div class="chat-tip">Chat with us 24/7</div>
+  <button class="chat-btn">&#9993;</button>
+</div>
+
+<script>
+// Progress bar
+const bar = document.getElementById('smdl-bar');
+window.addEventListener('scroll', () => { bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%'; }, { passive:true });
+
+// Nav shadow
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => { nav.style.boxShadow = window.scrollY > 50 ? '0 2px 24px rgba(120,227,254,.12)' : 'none'; }, { passive:true });
+
+// Hero slideshow
+let cur = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.hero-dot');
+function goSlide(n) {
+  slides[cur].classList.remove('active'); dots[cur].classList.remove('active');
+  cur = n; slides[cur].classList.add('active'); dots[cur].classList.add('active');
+}
+setInterval(() => goSlide((cur + 1) % slides.length), 4800);
+
+// Scroll reveal
+const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); }), { threshold:.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Points bar
+const fill = document.getElementById('ptsFill');
+if(fill) { fill.style.width='0'; const po = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) fill.style.width='65%'; }), {threshold:.4}); po.observe(fill); }
+
+// BG carousel
+let bgIdx = 0;
+const bgSlides = document.querySelectorAll('.cbg-slide');
+const cbgEl = document.getElementById('cbgDots');
+bgSlides.forEach((_,i) => { const d = document.createElement('button'); d.className='cbg-dot'+(i===0?' active':''); d.onclick=()=>bgGo(i); cbgEl.appendChild(d); });
+function bgGo(n) { bgSlides[bgIdx].classList.remove('active'); cbgEl.querySelectorAll('.cbg-dot')[bgIdx].classList.remove('active'); bgIdx=n%bgSlides.length; bgSlides[bgIdx].classList.add('active'); cbgEl.querySelectorAll('.cbg-dot')[bgIdx].classList.add('active'); }
+setInterval(()=>bgGo(bgIdx+1), 3800);
+
+// Form
+function handleSend(e) { e.preventDefault(); const b=e.target.querySelector('.btn-send'); b.textContent='Sent! We will be in touch soon.'; b.style.background='var(--tm)'; b.disabled=true; }
+</script>
+</body>
+</html>
