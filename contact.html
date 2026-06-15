@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | ShesMyDogLady</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--t:#81e5fe;--tm:#50dbfe;--td:#78e3fe;--tp:#e8faff;--ts:#81e5fe;--white:#FFFFFF;--off:#F9FEFE;--text:#1C3A39;--muted:#6B9997;--sand:#FAF7F2;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased;font-weight:600;overflow-x:hidden;}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;letter-spacing:-0.3px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:99;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);border-bottom:1.5px solid var(--ts);transition:box-shadow .3s;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--td);text-decoration:none;display:flex;flex-direction:column;line-height:1.1;}
+.nav-logo span{font-size:10px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);font-family:'Nunito',sans-serif;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--td);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-login{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;}
+.nav-points{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--td);text-decoration:none;background:var(--tp);padding:7px 14px;border-radius:100px;}
+.nav-points:hover{background:var(--ts);}
+.nav-book{font-size:13px;font-weight:700;color:#fff;background:var(--td);padding:9px 22px;border-radius:100px;text-decoration:none;transition:background .2s,transform .15s;box-shadow:0 4px 14px rgba(120,227,254,.25);}
+.nav-book:hover{background:var(--tm);transform:translateY(-1px);}
+.eyebrow{font-size:11px;font-weight:900;letter-spacing:0.16em;text-transform:uppercase;color:var(--td);margin-bottom:12px;display:block;}
+h2{font-size:clamp(32px,4vw,52px);font-weight:600;line-height:1.1;}
+.lead{font-size:17px;line-height:1.75;color:var(--muted);margin-top:14px;font-weight:600;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.in{opacity:1;transform:none;}
+#smdl-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--t),var(--td));z-index:9999;width:0;pointer-events:none;}
+::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:var(--tp);} ::-webkit-scrollbar-thumb{background:var(--tm);border-radius:100px;}
+
+/* CONTACT HERO with bg carousel */
+.contact-hero{margin-top:68px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:center;}
+.cbg{position:absolute;inset:0;z-index:0;}
+.cbg-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease;}
+.cbg-slide.active{opacity:1;}
+.cbg-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,248,247,.9),rgba(255,255,255,.88),rgba(232,248,247,.88));}
+.cbg-dots{position:absolute;bottom:16px;right:24px;display:flex;gap:7px;z-index:2;}
+.cbg-dot{width:7px;height:7px;border-radius:100px;background:var(--tm);opacity:.35;border:none;cursor:pointer;transition:all .3s;}
+.cbg-dot.active{opacity:1;width:20px;}
+.hero-content{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:72px 60px;width:100%;}
+.hero-content h1{font-size:clamp(42px,6vw,72px);font-weight:600;}
+.hero-content p{font-size:17px;color:var(--muted);max-width:480px;line-height:1.7;margin:16px 0 0;}
+
+/* CONTACT GRID */
+.contact-wrap{max-width:1200px;margin:0 auto;padding:64px 60px 88px;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.contact-form-card{background:var(--off);border:1.5px solid var(--ts);border-radius:24px;padding:40px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{margin-bottom:18px;}
+.form-group label{display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border:1.5px solid var(--ts);border-radius:10px;font-family:'Nunito',sans-serif;font-size:14px;color:var(--text);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--tm);box-shadow:0 0 0 3px rgba(80,219,254,.15);}
+.form-group textarea{min-height:100px;resize:none;}
+.pills-wrap{display:flex;flex-wrap:wrap;gap:8px;}
+.s-pill{font-size:13px;font-weight:700;cursor:pointer;padding:8px 18px;border-radius:100px;color:var(--td);background:var(--tp);border:1.5px solid var(--ts);transition:all .2s;user-select:none;}
+.s-pill.on{background:var(--td);color:#fff;border-color:var(--td);}
+.btn-send{width:100%;padding:15px;margin-top:8px;background:var(--td);color:#fff;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;border:none;border-radius:100px;cursor:pointer;transition:background .2s,transform .15s;box-shadow:0 4px 18px rgba(120,227,254,.3);}
+.btn-send:hover{background:var(--tm);transform:translateY(-1px);}
+.contact-info{padding-top:8px;}
+.contact-info h3{font-family:'Playfair Display',serif;font-size:30px;font-weight:600;margin-bottom:24px;}
+.info-card{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px;padding:18px 20px;background:var(--off);border:1.5px solid var(--ts);border-radius:16px;transition:all .2s;}
+.info-card:hover{background:var(--tp);border-color:var(--tm);}
+.info-icon{width:44px;height:44px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border:1.5px solid var(--ts);}
+.info-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.info-value{font-size:14px;font-weight:600;color:var(--text);}
+.info-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.areas-wrap-small{margin-top:28px;}
+.areas-wrap-small p{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.areas-mini{display:flex;flex-wrap:wrap;gap:6px;}
+.area-tag{font-size:12px;font-weight:600;color:var(--td);background:var(--tp);padding:5px 12px;border-radius:100px;border:1px solid var(--ts);}
+
+/* FAQ */
+.faq-wrap{background:var(--sand);padding:88px 60px;}
+.faq-inner{max-width:800px;margin:0 auto;}
+.faq-head{text-align:center;margin-bottom:48px;}
+.faq-item{border-bottom:1.5px solid var(--ts);overflow:hidden;}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;background:none;border:none;cursor:pointer;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;color:var(--text);text-align:left;transition:color .2s;}
+.faq-q:hover{color:var(--td);}
+.faq-arrow{font-size:18px;color:var(--td);transition:transform .3s;flex-shrink:0;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s ease;font-size:14px;color:var(--muted);line-height:1.7;}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:18px;}
+.faq-item.open .faq-arrow{transform:rotate(180deg);}
+
+footer{background:var(--text);color:rgba(255,255,255,.55);padding:56px 60px 32px;}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08);gap:48px;flex-wrap:wrap;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--ts);margin-bottom:8px;}
+.footer-tag{font-size:13px;max-width:220px;line-height:1.65;}
+.footer-nav{display:flex;gap:60px;}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#fff;margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:10px;transition:color .2s;}
+.footer-col a:hover{color:var(--ts);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:12px;flex-wrap:wrap;gap:12px;}
+.insta-link{font-size:13px;font-weight:600;color:rgba(255,255,255,.55);text-decoration:none;}
+.insta-link:hover{color:var(--ts);}
+.chat-fab{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.chat-tip{background:var(--td);color:#fff;font-size:12px;font-weight:700;padding:7px 14px;border-radius:100px;white-space:nowrap;opacity:0;transform:translateY(4px);transition:all .2s;pointer-events:none;}
+.chat-fab:hover .chat-tip{opacity:1;transform:none;}
+.chat-btn{width:56px;height:56px;border-radius:50%;background:var(--td);border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(120,227,254,.35);transition:transform .2s;}
+.chat-btn:hover{transform:scale(1.1);background:var(--tm);}
+@media(max-width:900px){
+  nav{padding:0 20px;} .nav-links{display:none;}
+  .hero-content,.contact-wrap,.faq-wrap{padding:64px 24px;}
+  .contact-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  footer{padding:48px 24px 28px;} .footer-nav{flex-direction:column;gap:24px;}
+}
+</style>
+</head>
+<body>
+<div id="smdl-bar"></div>
+<nav id="main-nav">
+  <a class="nav-logo" href="index.html">ShesMyDogLady<span>& He's My Dog Dude</span></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="members.html">Members</a></li>
+    <li><a href="dogs.html">The Dogs</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="nav-login" href="members.html">Log In</a>
+    <a class="nav-points" href="members.html">View Points</a>
+    <a class="nav-book" href="contact.html">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO with photo background -->
+<div class="contact-hero">
+  <div class="cbg">
+    <div class="cbg-slide active" style="background-image:url('https://static.wixstatic.com/media/169970_0f6bc01614994ade8d061b382c48111d~mv2.jpg')"></div>
+    <div class="cbg-slide" style="background-image:url('https://static.wixstatic.com/media/169970_1459c9ecd83c4c9b854520f7ddd1591b~mv2.jpg')"></div>
+    <div class="cbg-slide" style="background-image:url('https://static.wixstatic.com/media/169970_b8a1c2cd8fbc41b39a0807b0238a1550~mv2.jpg')"></div>
+    <div class="cbg-slide" style="background-image:url('https://static.wixstatic.com/media/169970_2c2ef02992a74150bfcabb1d32d98257~mv2.jpg')"></div>
+    <div class="cbg-overlay"></div>
+    <div class="cbg-dots" id="cbgDots"></div>
+  </div>
+  <div class="hero-content reveal">
+    <span class="eyebrow">Get In Touch</span>
+    <h1>How can we help?</h1>
+    <p>Tell us about your pup and we'll reach out to schedule your free meet &amp; greet no commitment needed.</p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap">
+  <div class="contact-grid reveal">
+    <div class="contact-form-card">
+      <form onsubmit="handleSend(event)">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="Jane"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="jane@email.com"></div>
+        <div class="form-group"><label>Phone</label><input type="tel" placeholder="(760) 000-0000"></div>
+        <div class="form-group"><label>Dog's Name &amp; Breed</label><input type="text" placeholder="Biscuit Labrador Mix"></div>
+        <div class="form-group">
+          <label>I'm Interested In</label>
+          <div class="pills-wrap">
+            <span class="s-pill" onclick="this.classList.toggle('on')">Private Lessons</span>
+            <span class="s-pill" onclick="this.classList.toggle('on')">Training Walks</span>
+            <span class="s-pill" onclick="this.classList.toggle('on')">Overnight Care</span>
+            <span class="s-pill" onclick="this.classList.toggle('on')">Puppy Care</span>
+            <span class="s-pill" onclick="this.classList.toggle('on')">Other</span>
+          </div>
+        </div>
+        <div class="form-group"><label>Tell us about your pup</label><textarea placeholder="Breed, age, behavior notes, training goals..."></textarea></div>
+        <button class="btn-send" type="submit">Send Message</button>
+      </form>
+    </div>
+    <div class="contact-info">
+      <h3>We would love to meet your dog</h3>
+      <div class="info-card">
+        <div class="info-icon">&#9993;</div>
+        <div><div class="info-label">Email</div><div class="info-value">shesmydoglady@gmail.com</div><div class="info-sub">We reply within 24 hours</div></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">&#9742;</div>
+        <div><div class="info-label">Phone</div><div class="info-value">760-305-2244</div><div class="info-sub">Text or call anytime</div></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">&#9673;</div>
+        <div><div class="info-label">Service Area</div><div class="info-value">San Diego County, CA</div><div class="info-sub">We come to your neighborhood</div></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">&#9672;</div>
+        <div><div class="info-label">AI Chat</div><div class="info-value">Available 24/7</div><div class="info-sub">Tap the chat button for instant answers</div></div>
+      </div>
+      <div class="areas-wrap-small">
+        <p>Areas we serve</p>
+        <div class="areas-mini">
+          <span class="area-tag">Pacific Beach</span><span class="area-tag">La Jolla</span><span class="area-tag">Ocean Beach</span>
+          <span class="area-tag">Downtown</span><span class="area-tag">Del Mar</span><span class="area-tag">Encinitas</span>
+          <span class="area-tag">North Park</span><span class="area-tag">Clairemont</span><span class="area-tag">El Cajon</span>
+          <span class="area-tag">Spring Valley</span><span class="area-tag">La Mesa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-wrap">
+  <div class="faq-inner">
+    <div class="faq-head reveal">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Frequently asked</h2>
+    </div>
+    <div class="reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do you work with reactive dogs? <span class="faq-arrow">&#8964;</span></button>
+        <div class="faq-a">Yes reactive dogs are actually our specialty. We use positive, science-backed methods and work at your dog's pace. We never rush, force, or flood.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How does the meet &amp; greet work? <span class="faq-arrow">&#8964;</span></button>
+        <div class="faq-a">It's completely free and no commitment. We come to you, meet your dog in their environment, and have a conversation about your goals. If it's a good fit, we'll build a plan from there.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What areas do you serve? <span class="faq-arrow">&#8964;</span></button>
+        <div class="faq-a">We serve most of San Diego County Pacific Beach, La Jolla, Ocean Beach, Downtown, Del Mar, Solana Beach, Encinitas, North Park, Clairemont, Spring Valley, El Cajon, La Mesa, and more. Reach out if you're unsure about your area.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do you board multiple dogs together? <span class="faq-arrow">&#8964;</span></button>
+        <div class="faq-a">No overnight care is one dog at a time. We believe in individual attention, especially for dogs that struggle in group settings.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I earn Puppy Points? <span class="faq-arrow">&#8964;</span></button>
+        <div class="faq-a">You earn points with every booking. Log in to your members area to see your balance, track your tier, and redeem points for free sessions and discounts.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><div class="footer-logo">ShesMyDogLady</div><p class="footer-tag">Unconditional love and personalized care for every dog in San Diego.</p></div>
+    <div class="footer-nav">
+      <div class="footer-col"><h4>Site</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a><a href="dogs.html">The Dogs</a></div>
+      <div class="footer-col"><h4>Members</h4><a href="members.html">Earn Puppy Points</a><a href="members.html">My Rewards</a><a href="members.html">My Account</a><a href="contact.html">Book Now</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2025 ShesMyDogLady. All rights reserved.</span><a class="insta-link" href="https://www.instagram.com/shesmydoglady/" target="_blank">@shesmydoglady</a></div>
+</footer>
+<div class="chat-fab"><div class="chat-tip">Chat with us 24/7</div><button class="chat-btn">&#9993;</button></div>
+<script>
+const bar=document.getElementById('smdl-bar');
+window.addEventListener('scroll',()=>{bar.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';},{passive:true});
+const nav=document.getElementById('main-nav');
+window.addEventListener('scroll',()=>{nav.style.boxShadow=window.scrollY>50?'0 2px 24px rgba(120,227,254,.12)':'none';},{passive:true});
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+let bgIdx=0;
+const bgSlides=document.querySelectorAll('.cbg-slide');
+const cbgEl=document.getElementById('cbgDots');
+bgSlides.forEach((_,i)=>{const d=document.createElement('button');d.className='cbg-dot'+(i===0?' active':'');d.onclick=()=>bgGo(i);cbgEl.appendChild(d);});
+function bgGo(n){bgSlides[bgIdx].classList.remove('active');cbgEl.querySelectorAll('.cbg-dot')[bgIdx].classList.remove('active');bgIdx=n%bgSlides.length;bgSlides[bgIdx].classList.add('active');cbgEl.querySelectorAll('.cbg-dot')[bgIdx].classList.add('active');}
+setInterval(()=>bgGo(bgIdx+1),3800);
+function handleSend(e){e.preventDefault();const b=e.target.querySelector('.btn-send');b.textContent='Sent! We will be in touch soon.';b.style.background='var(--tm)';b.disabled=true;}
+function toggleFaq(btn){const item=btn.closest('.faq-item');const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');}
+</script>
+</body>
+</html>
